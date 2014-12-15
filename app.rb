@@ -1,0 +1,8 @@
+require 'sinatra'
+require 'sinatra/activerecord'
+
+enable :sessions
+
+get '/' do
+	erb :index
+end
