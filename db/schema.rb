@@ -16,6 +16,14 @@ ActiveRecord::Schema.define(version: 20141215130813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "ar_users", force: true do |t|
+    t.string "email"
+    t.string "hashed_password"
+    t.string "salt"
+  end
+
+  add_index "ar_users", ["email"], name: "index_ar_users_on_email", unique: true, using: :btree
+
   create_table "friendships", force: true do |t|
     t.integer "user_id",                       null: false
     t.integer "friend_id",                     null: false
@@ -26,6 +34,8 @@ ActiveRecord::Schema.define(version: 20141215130813) do
     t.string "username"
     t.string "email"
     t.string "bio"
+    t.string "hashed_password"
+    t.string "salt"
   end
 
 end
