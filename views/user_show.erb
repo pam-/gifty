@@ -1,0 +1,13 @@
+<div>
+	<%= @success_message %>
+	<%= @error_message %>  
+</div>
+
+<%= @user.username %>
+<% if @pending  %> 
+	<p>Request pending</p> 
+<% elsif @friended %>
+  <%= erb :confirm_request %>  
+<% elsif @user != current_user && !@pending && !@friends %>
+	<%= erb :new_request %>
+<% end  %> 
