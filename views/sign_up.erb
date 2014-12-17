@@ -1,7 +1,8 @@
-<form action="/sign_up" method="post">
-	<input type="text" name="username">
-	<input type="text" name="email">
-	<input type="password" name="password">
-	<input type="text" name="password_confirmation">
+<form action="/sign_up" method="post" enctype="multipart/form-data">
+	<input type="file" name="content[file]" id="content_file">
+	<input type="text" name="username" placeholder="Enter username">
+	<input type="text" name="email" placeholder="Enter email">
+	<input type="password" name="password" placeholder="Enter password">
+	<input type="password" name="password_confirmation" placeholder="Enter password">
 	<input type="submit">
 </form>

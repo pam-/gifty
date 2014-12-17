@@ -5,7 +5,7 @@ require 'pry'
 
 require_relative './models/user'
 require_relative './models/friendship'
-binding.pry
+# binding.pry
 
 enable :sessions
 
@@ -21,17 +21,16 @@ helpers do
   def user_signed_in?
   	session[:user_id]
   end
-
-  # def authenticate_user
-  # 	redirect '/login' unless user_signed_in?
-  # end
 end
 
 before do
   session[:cart] ||= []
   @errors ||= []
   @current_user = User.find_by(:id => session[:user_id])
-  # authenticate_user
+end
+
+def authenticate_user
+	redirect '/login' unless user_signed_in?
 end
 
 get '/' do
@@ -40,6 +39,7 @@ get '/' do
 end
 
 get '/users/:id' do
+	authenticate_user
 	@user = User.find(params[:id])
 	@friends = @user.friends.include?(current_user)
 	@pending = Friendship.exists?(user_id: current_user.id, friend_id: @user.id, status: 'pending')
@@ -90,7 +90,12 @@ get '/sign_up' do
   erb :sign_up
 end
 
+get '/update' do
+  erb :update
+end 
+
 post "/sign_up" do
+  upload(params[:content]['file'][:filename], params[:content]['file'][:tempfile])
   user = User.new(params)
   if user.save
     session[:user_id] = user.id
@@ -99,6 +104,15 @@ post "/sign_up" do
     @user = user
     erb :sign_up
   end
+end
+
+post '/users/update' do
+  upload(params[:content]['file'][:filename], params[:content]['file'][:tempfile])
+  if current_user.update_attributes(params)
+    redirect "/users/#{current_user.id}"
+  else
+    redirect '/update'
+  end 
 end
 
 get "/logout" do

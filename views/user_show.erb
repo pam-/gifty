@@ -1,11 +1,11 @@
-<div>
-	<%= @success_message %>
-	<%= @error_message %>  
-</div>
+<p><%= @user.username %></p>
 
-<%= @user.username %>
+<% if current_user %>
+	<%= erb :update %> 
+<% end %>  
+
 <% if @pending  %> 
-	<p>Request pending</p> 
+	<button>Request pending</button> 
 <% elsif @friended %>
   <%= erb :confirm_request %>  
 <% elsif @user != current_user && !@pending && !@friends %>

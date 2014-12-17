@@ -2,17 +2,18 @@
 <html>
 <head>
 	<title>Friends</title>
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
 	<header> 
-		<h1>Friends</h1>
+		<h1>Friendzone</h1>
 		<ul>
 			<li> <a href="/">home</a> </li>
 			<% if user_signed_in? %>
-				<li> <a href="/logout"> Sign Out </a> </li>
+				<li> <a href="/logout"> Sign out </a> </li>
 			<% else %>
-				<li> <a href="/login"> Sign In</a> </li> 
-				<li> <a href="/sign_up"> Sign Up</a> </li> 
+				<li> <a href="/login"> Sign in</a> </li> 
+				<li> <a href="/sign_up"> Sign up</a> </li> 
 			<% end %> 
 		</ul>
  	</header>

@@ -1,0 +1,7 @@
+<form action="/users/update" method="post" enctype="multipart/form-data">
+	<!-- <input type="hidden" name="_method" value="put"> -->
+	<input type="file" name="picture_uri[file]" id="content_file" value="<%= current_user.picture_uri %>">
+	<input type="text" name="username" placeholder="Enter username" value="<%= current_user.username %>">
+	<input type="text" name="email" placeholder="Enter email" value="<%= current_user.email %> ">
+	<input type="submit">
+</form>

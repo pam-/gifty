@@ -1,0 +1,44 @@
+body{
+	height: 100%;
+	font-family: "Avenir"
+}
+
+header{
+	margin: 0 auto;
+	width: 80%;
+	border-bottom: 1px solid #000000;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
+a:visited{
+	color: inherit;
+}
+
+
+ul{
+	list-style: none;
+}
+
+ul li{
+	display: inline-block;
+}
+
+header h1{
+	margin: 10px;
+	float: left;
+}
+
+header ul {
+	margin: 20px;
+	float: right;
+}
+
+header:after{
+	content: " ";
+	display: block;
+	clear: both;
+}

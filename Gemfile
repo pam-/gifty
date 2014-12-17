@@ -9,5 +9,5 @@ gem 'sinatra-activerecord'
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg'
 
-gem 'paperclip'
+gem 'paperclip-rack', require: 'paperclip/rack'
 gem 'aws-sdk'
